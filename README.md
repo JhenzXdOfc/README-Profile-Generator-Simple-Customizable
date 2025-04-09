@@ -30,4 +30,4 @@ Alat ini dirancang untuk mempermudah kamu membuat tampilan profil GitHub yang ke
 # Hi there 👋
 I'm Jhenzty, a passionate developer from Indonesia 🇮🇩  
 🌱 I’m currently learning React.js and building cool stuff with Node.js  
-📫 How to reach me: [Instagram](https://instagram.com/jxo_botzz)
+📫 How to reach me: https://instagram.com/JhenzXdOfc
