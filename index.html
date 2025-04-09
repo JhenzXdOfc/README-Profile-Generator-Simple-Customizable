@@ -260,7 +260,7 @@
             <div class="section">
                 <div class="section-header">
                     <h3>Profile Settings</h3>
-                    <span>↕️</span>
+                    <span>↕</span>
                 </div>
                 <div class="section-content">
                     <input type="text" id="githubUsername" placeholder="GitHub Username" onchange="updatePreview()">
@@ -270,7 +270,7 @@
             <div class="section">
                 <div class="section-header">
                     <h3>Tech Stack</h3>
-                    <span>↕️</span>
+                    <span>↕</span>
                 </div>
                 <div class="section-content">
                     <div class="tech-grid">
@@ -363,9 +363,24 @@
                 </div>
             </div>
             <div class="section">
+    <div class="section-header">
+        <h3>Social Media Links</h3>
+    </div>
+    <div class="section-content">
+        <input type="text" id="github" placeholder="GitHub Username" onchange="updateSocialMedia()">
+        <input type="text" id="twitter" placeholder="Twitter Username" onchange="updateSocialMedia()">
+        <input type="text" id="linkedin" placeholder="LinkedIn Username" onchange="updateSocialMedia()">
+        <input type="text" id="instagram" placeholder="Instagram Username" onchange="updateSocialMedia()">
+        <input type="text" id="facebook" placeholder="Facebook Username" onchange="updateSocialMedia()">
+        <input type="text" id="youtube" placeholder="YouTube Channel Name" onchange="updateSocialMedia()">
+        <input type="text" id="tiktok" placeholder="TikTok Username" onchange="updateSocialMedia()">
+        <input type="text" id="discord" placeholder="Discord User ID" onchange="updateSocialMedia()">
+    </div>
+</div>
+            <div class="section">
                 <div class="section-header">
                     <h3>GitHub Stats</h3>
-                    <span>↕️</span>
+                    <span>↕</span>
                 </div>
                 <div class="section-content">
                     <div class="tech-checkbox">
@@ -389,7 +404,7 @@
             <div class="section">
                 <div class="section-header">
                     <h3>Custom Sections</h3>
-                    <span>↕️</span>
+                    <span>↕</span>
                 </div>
                 <div class="section-content">
                     <button onclick="addCustomSection()">Add Custom Section</button>
@@ -399,7 +414,7 @@
             <div class="section">
                 <div class="section-header">
                     <h3>Theme Settings</h3>
-                    <span>↕️</span>
+                    <span>↕</span>
                 </div>
                 <div class="section-content">
                     <select id="themeStyle" onchange="updatePreview()">
@@ -441,6 +456,35 @@
         </div>
     </div>
     <script>
+function updateSocialMedia() {
+    state.socialMedia = {
+        github: document.getElementById('github').value.trim(),
+        twitter: document.getElementById('twitter').value.trim(),
+        linkedin: document.getElementById('linkedin').value.trim(),
+        instagram: document.getElementById('instagram').value.trim(),
+        facebook: document.getElementById('facebook').value.trim(),
+        youtube: document.getElementById('youtube').value.trim(),
+        tiktok: document.getElementById('tiktok').value.trim(),
+        discord: document.getElementById('discord').value.trim(),
+    };
+    updatePreview();
+}
+ 
+function generateSocialMediaMarkdown() {
+    let sm = state.socialMedia;
+    let markdown = ## 🌐 Connect with me\n;
+ 
+    if (sm.github) markdown += `[![GitHub](https://img.shields.io/badge/GitHub-%23121011.svg?style=flat&logo=github&logoColor=white)](https://github.com/${sm.github}) `;
+    if (sm.twitter) markdown += `[![Twitter](https://img.shields.io/badge/Twitter-%231DA1F2.svg?style=flat&logo=twitter&logoColor=white)](https://twitter.com/${sm.twitter}) `;
+    if (sm.linkedin) markdown += `[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/${sm.linkedin}) `;
+    if (sm.instagram) markdown += `[![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?style=flat&logo=instagram&logoColor=white)](https://instagram.com/${sm.instagram}) `;
+    if (sm.facebook) markdown += `[![Facebook](https://img.shields.io/badge/Facebook-%231877F2.svg?style=flat&logo=facebook&logoColor=white)](https://facebook.com/${sm.facebook}) `;
+    if (sm.youtube) markdown += `[![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?style=flat&logo=youtube&logoColor=white)](https://youtube.com/@${sm.youtube}) `;
+    if (sm.tiktok) markdown += `[![TikTok](https://img.shields.io/badge/TikTok-%23000000.svg?style=flat&logo=tiktok&logoColor=white)](https://www.tiktok.com/@${sm.tiktok}) `;
+    if (sm.discord) markdown += `[![Discord](https://img.shields.io/badge/Discord-%237289DA.svg?style=flat&logo=discord&logoColor=white)](https://discord.com/users/${sm.discord}) `;
+ 
+    return markdown + "\n\n";
+}
         const themeToggle = document.getElementById('themeToggle');
         themeToggle.addEventListener('change', () => {
             document.body.classList.toggle('light-theme', themeToggle.checked);
@@ -473,7 +517,7 @@
             }
         }
         function toggleTech(tech) {
-            const checkbox = document.getElementById(`tech-${tech}`);
+            const checkbox = document.getElementById(tech-${tech});
             if (checkbox.checked) {
                 if (!state.techStack.includes(tech)) {
                     state.techStack.push(tech);
@@ -490,18 +534,18 @@
                 const offsetX = e.clientX - rect.left;
                 const offsetY = e.clientY - rect.top;
                 const placeholder = document.createElement('div');
-                placeholder.style.height = `${element.offsetHeight}px`;
+                placeholder.style.height = ${element.offsetHeight}px;
                 placeholder.style.marginBottom = '20px';
                 placeholder.style.border = '2px dashed var(--border)';
                 placeholder.style.borderRadius = '6px';
                 const clone = element.cloneNode(true);
                 clone.style.position = 'absolute';
-                clone.style.width = `${element.offsetWidth}px`;
+                clone.style.width = ${element.offsetWidth}px;
                 clone.style.zIndex = '1000';
                 clone.style.opacity = '0.9';
                 function handleMouseMove(e) {
-                    clone.style.left = `${e.clientX - offsetX}px`;
-                    clone.style.top = `${e.clientY - offsetY}px`;
+                    clone.style.left = ${e.clientX - offsetX}px;
+                    clone.style.top = ${e.clientY - offsetY}px;
                     const elemBelow = document.elementFromPoint(e.clientX, e.clientY);
                     const droppable = elemBelow?.closest('.section');
                     if (droppable && droppable !== element) {
@@ -530,8 +574,8 @@
                 }
                 document.body.appendChild(clone);
                 element.parentNode.replaceChild(placeholder, element);
-                clone.style.left = `${e.clientX - offsetX}px`;
-                clone.style.top = `${e.clientY - offsetY}px`;
+                clone.style.left = ${e.clientX - offsetX}px;
+                clone.style.top = ${e.clientY - offsetY}px;
                 document.addEventListener('mousemove', handleMouseMove);
                 document.addEventListener('mouseup', handleMouseUp);
                 e.preventDefault();
@@ -539,7 +583,7 @@
         }
         function addCustomSection() {
             const newSection = {
-                id: `section_${Date.now()}`,
+                id: section_${Date.now()},
                 title: 'Custom Section',
                 content: '',
             };
@@ -588,46 +632,75 @@
             state.theme = document.getElementById('themeStyle').value;
         }
         function generateMarkdown() {
-            updateState();
-            let markdown = '';
-            if (state.username) {
-                markdown += `# Hi there 👋, I'm ${state.username}\n`;
-                if (state.description) {
-                    markdown += `${state.description}\n`;
-                }
-                markdown += `![Profile Views](https://komarev.com/ghpvc/?username=${state.username}&color=blueviolet)\n`;
-            } else {
-                markdown += `# My GitHub Profile\n`;
-            }
-            if (state.techStack.length > 0) {
-                markdown += `## 🛠️ Tech Stack\n`;
-                state.techStack.forEach(tech => {
-                    markdown += `![${tech}](https://img.shields.io/badge/-${tech}-05122A?style=flat&logo=${tech}) `;
-                });
-                markdown += `\n`;
-            }
-            state.customSections.forEach(section => {
-                markdown += `## ${section.title}\n${section.content}\n`;
-            });
-            if (state.username && (state.showStats || state.showLanguages || state.showStreak || state.showTrophies)) {
-                markdown += `## 📊 GitHub Stats\n`;
-                if (state.showStats) {
-                    markdown += `![${state.username}'s GitHub stats](https://github-readme-stats.vercel.app/api?username=${state.username}&show_icons=true&theme=${state.theme})\n`;
-                }
-                if (state.showLanguages) {
-                    markdown += `![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=${state.username}&layout=compact&theme=${state.theme})\n`;
-                }
-                if (state.showStreak) {
-                    markdown += `![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=${state.username}&theme=${state.theme})\n`;
-                }
-                if (state.showTrophies) {
-                    markdown += `![Trophy](https://github-profile-trophy.vercel.app/?username=${state.username}&theme=${state.theme}&row=1)\n`;
-                }
-            }
-            markdown += `---\n`;
-            markdown += `*Generated with [GitHub README Generator](https://github.com)*\n`;
-            return markdown;
+    updateState();
+    let markdown = '';
+ 
+    // Header Profile
+    if (state.username) {
+        markdown += # Hi there 👋, I'm ${state.username}\n;
+        if (state.description) {
+            markdown += ${state.description}\n\n;
         }
+        markdown += ![Profile Views](https://komarev.com/ghpvc/?username=${state.username}&color=blueviolet)\n\n;
+    } else {
+        markdown += # My GitHub Profile\n\n;
+    }
+ 
+    // Social Media Links Section
+    let sm = state.socialMedia;
+    let socialLinks = [];
+    if (sm.github) socialLinks.push([![GitHub](https://img.shields.io/badge/GitHub-%23121011.svg?style=flat&logo=github&logoColor=white)](https://github.com/${sm.github}));
+    if (sm.twitter) socialLinks.push([![Twitter](https://img.shields.io/badge/Twitter-%231DA1F2.svg?style=flat&logo=twitter&logoColor=white)](https://twitter.com/${sm.twitter}));
+    if (sm.linkedin) socialLinks.push([![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/${sm.linkedin}));
+    if (sm.instagram) socialLinks.push([![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?style=flat&logo=instagram&logoColor=white)](https://instagram.com/${sm.instagram}));
+    if (sm.facebook) socialLinks.push([![Facebook](https://img.shields.io/badge/Facebook-%231877F2.svg?style=flat&logo=facebook&logoColor=white)](https://facebook.com/${sm.facebook}));
+    if (sm.youtube) socialLinks.push([![YouTube](https://img.shields.io/badge/YouTube-%23FF0000.svg?style=flat&logo=youtube&logoColor=white)](https://youtube.com/@${sm.youtube}));
+    if (sm.discord) socialLinks.push([![Discord](https://img.shields.io/badge/Discord-%237289DA.svg?style=flat&logo=discord&logoColor=white)](https://discord.com/users/${sm.discord}));
+    if (sm.tiktok) socialLinks.push([![TikTok](https://img.shields.io/badge/TikTok-%23000000.svg?style=flat&logo=tiktok&logoColor=white)](https://www.tiktok.com/@${sm.tiktok}));
+ 
+    if (socialLinks.length > 0) {
+        markdown += ## 🌐 Connect with me\n;
+        markdown += socialLinks.join(" ") + "\n\n";
+    }
+ 
+    // Tech Stack
+    if (state.techStack.length > 0) {
+        markdown += ## 🛠 Tech Stack\n;
+        state.techStack.forEach(tech => {
+            markdown += `![${tech}](https://img.shields.io/badge/-${tech}-05122A?style=flat&logo=${tech}) `;
+        });
+        markdown += \n\n;
+    }
+ 
+    // Custom Sections
+    state.customSections.forEach(section => {
+        markdown += ## ${section.title}\n${section.content}\n\n;
+    });
+ 
+    // GitHub Stats
+    if (state.username && (state.showStats || state.showLanguages || state.showStreak || state.showTrophies)) {
+        markdown += ## 📊 GitHub Stats\n;
+        if (state.showStats) {
+            markdown += ![${state.username}'s GitHub stats](https://github-readme-stats.vercel.app/api?username=${state.username}&show_icons=true&theme=${state.theme})\n;
+        }
+        if (state.showLanguages) {
+            markdown += ![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=${state.username}&layout=compact&theme=${state.theme})\n;
+        }
+        if (state.showStreak) {
+            markdown += ![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=${state.username}&theme=${state.theme})\n;
+        }
+        if (state.showTrophies) {
+            markdown += ![Trophy](https://github-profile-trophy.vercel.app/?username=${state.username}&theme=${state.theme}&row=1)\n;
+        }
+        markdown += \n;
+    }
+ 
+    // Footer
+    markdown += ---\n;
+    markdown += *Generated with [GitHub README Generator](https://github.com)*\n;
+ 
+    return markdown;
+}
         function updatePreview() {
             const markdown = generateMarkdown();
             const previewElement = document.getElementById('markdownPreview');
